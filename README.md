@@ -1,0 +1,1 @@
+An OpenGL API with modern c++ in mind, inspired by Vulkan-Hpp
