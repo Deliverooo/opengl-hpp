@@ -201,4 +201,21 @@ namespace gl
 		}
 		return "";
 	}
+
+	inline std::string to_string(FramebufferStatus p_value)
+	{
+		switch (p_value)
+		{
+			case FramebufferStatus::eComplete: return "Complete";
+			case FramebufferStatus::eUndefined: return "Undefined";
+			case FramebufferStatus::eIncompleteAttachment: return "IncompleteAttachment";
+			case FramebufferStatus::eIncompleteMissingAttachment: return "IncompleteMissingAttachment";
+			case FramebufferStatus::eIncompleteDrawBuffer: return "IncompleteDrawBuffer";
+			case FramebufferStatus::eIncompleteReadBuffer: return "IncompleteReadBuffer";
+			case FramebufferStatus::eUnsupported: return "Unsupported";
+			case FramebufferStatus::eIncompleteMultisample: return "IncompleteMultisample";
+			case FramebufferStatus::eIncompleteLayerTargets: return "IncompleteLayerTargets";
+		}
+		return "";
+	}
 }
