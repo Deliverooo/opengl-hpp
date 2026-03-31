@@ -132,13 +132,13 @@ namespace gl
 	 *
 	 *
 	 */
-	TST_API void readPixels(Int x, Int y, Int width, Int height, Enum format, Enum type, Void *data);
+	TST_API void readPixels(Int p_x, Int p_y, Int p_width, Int p_height, Format p_format, DataType p_type, Void *p_data);
 
 	/*!
 	 *
 	 *
 	 */
-	TST_API void readnPixels(Int x, Int y, Int width, Int height, Enum format, Enum type, Int buffer_size, Void *data);
+	TST_API void readnPixels(Int p_x, Int p_y, Int p_width, Int p_height, Format p_format, DataType p_type, Int buffer_size, Void *data);
 
 	#pragma endregion
 
@@ -216,21 +216,21 @@ namespace gl
 
 	TST_API void invalidateNamedFramebufferData(UInt p_framebuffer, SizeI num_attachments, const Enum *attachments);
 
-	TST_API void invalidateSubFramebuffer(Enum target, SizeI num_attachments, const Enum *attachments, Int x, Int y, Int width, Int height);
+	TST_API void invalidateSubFramebuffer(Enum target, SizeI num_attachments, const Enum *attachments, Int p_x, Int p_y, Int p_width, Int p_height);
 
-	TST_API void invalidateNamedFramebufferSubData(UInt p_framebuffer, SizeI num_attachments, const Enum *attachments, Int x, Int y, Int width, Int height);
+	TST_API void invalidateNamedFramebufferSubData(UInt p_framebuffer, SizeI num_attachments, const Enum *attachments, Int p_x, Int p_y, Int p_width, Int p_height);
 
 	TST_API bool isFramebuffer(UInt p_framebuffer);
 
 	TST_API bool isRenderbuffer(UInt p_renderbuffer);
 
-	TST_API void renderbufferStorage(Enum target, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void renderbufferStorage(Enum target, Format p_internal_format, SizeI p_width, SizeI p_height);
 
-	TST_API void namedRenderbufferStorage(UInt p_renderbuffer, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void namedRenderbufferStorage(UInt p_renderbuffer, Format p_internal_format, SizeI p_width, SizeI p_height);
 
-	TST_API void renderbufferStorageMultisample(Enum target, SizeI samples, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void renderbufferStorageMultisample(Enum target, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height);
 
-	TST_API void namedRenderbufferStorageMultisample(UInt p_renderbuffer, SizeI samples, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void namedRenderbufferStorageMultisample(UInt p_renderbuffer, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height);
 
 	TST_API void sampleMaskI(UInt index, Bitfield mask);
 
@@ -325,22 +325,22 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void clearBufferData(BufferType p_target, Enum internal_format, Enum format, Enum type, const Void *data);
+	TST_API void clearBufferData(BufferType p_target, Enum internal_format, Format p_format, DataType p_type, const Void *data);
 
 	/**
 	 *
 	 **/
-	TST_API void clearNamedBufferData(UInt target, Enum internal_format, Enum format, Enum type, const Void *data);
+	TST_API void clearNamedBufferData(UInt target, Enum internal_format, Format p_format, DataType p_type, const Void *data);
 
 	/**
 	 *
 	 **/
-	TST_API void clearBufferSubData(BufferType p_target, Enum internal_format, IntPtr offset, SizeIPtr size, Enum format, Enum type, const Void *data);
+	TST_API void clearBufferSubData(BufferType p_target, Enum internal_format, IntPtr offset, SizeIPtr size, Format p_format, DataType p_type, const Void *data);
 
 	/**
 	 *
 	 **/
-	TST_API void clearNamedBufferSubData(UInt target, Enum internal_format, IntPtr offset, SizeIPtr size, Enum format, Enum type, const Void *data);
+	TST_API void clearNamedBufferSubData(UInt target, Enum internal_format, IntPtr offset, SizeIPtr size, Format p_format, DataType p_type, const Void *data);
 
 	/**
 	 *
@@ -410,17 +410,17 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void drawElementsIndirect(DrawMode p_mode, DataType p_type, const void *p_indirect);
+	TST_API void drawElementsIndirect(DrawMode p_mode, DataType p_type, const Void *p_indirect);
 
 	/**
 	 *
 	 **/
-	TST_API void drawElementsInstanced(DrawMode p_mode, SizeI p_count, DataType p_type, const void *p_indices, SizeI p_primitive_count);
+	TST_API void drawElementsInstanced(DrawMode p_mode, SizeI p_count, DataType p_type, const Void *p_indices, SizeI p_primitive_count);
 
 	/**
 	 *
 	 **/
-	TST_API void drawElementsInstancedBaseInstance(DrawMode p_mode, SizeI p_count, DataType p_type, const void *p_indices, SizeI p_primitive_count, UInt p_base_instance);
+	TST_API void drawElementsInstancedBaseInstance(DrawMode p_mode, SizeI p_count, DataType p_type, const Void *p_indices, SizeI p_primitive_count, UInt p_base_instance);
 
 	/**
 	 *
@@ -496,7 +496,7 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void getNamedBufferPointerV(UInt buffer, Enum pname, void **params);
+	TST_API void getNamedBufferPointerV(UInt buffer, Enum pname, Void **params);
 
 	/**
 	 *
@@ -506,7 +506,7 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void getNamedBufferSubData(UInt buffer, IntPtr offset, SizeI size, void *data);
+	TST_API void getNamedBufferSubData(UInt buffer, IntPtr offset, SizeI size, Void *data);
 
 	/**
 	 *
@@ -601,7 +601,7 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void multiDrawArraysIndirect(Enum mode, const void *indirect, SizeI draw_count, SizeI stride);
+	TST_API void multiDrawArraysIndirect(Enum mode, const Void *indirect, SizeI draw_count, SizeI stride);
 
 	/**
 	 *
@@ -616,7 +616,7 @@ namespace gl
 	/**
 	 *
 	 **/
-	TST_API void multiDrawElementsIndirect(Enum mode, Enum type, const void *indirect, SizeI draw_count, SizeI stride);
+	TST_API void multiDrawElementsIndirect(Enum mode, Enum type, const Void *indirect, SizeI draw_count, SizeI stride);
 
 	/**
 	 *
@@ -938,11 +938,11 @@ namespace gl
 
 	TST_API void sampleCoverage(Float value, Bool invert);
 
-	TST_API void scissor(Int x, Int y, Int width, Int height);
+	TST_API void scissor(Int p_x, Int p_y, Int p_width, Int p_height);
 
 	TST_API void scissorArrayV(UInt first, UInt count, const Int *v);
 
-	TST_API void scissorIndexed(UInt index, Int x, Int y, SizeI width, SizeI height);
+	TST_API void scissorIndexed(UInt index, Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
 	TST_API void scissorIndexedV(UInt index, const Int *v);
 
@@ -958,7 +958,7 @@ namespace gl
 
 	TST_API void stencilOpSeparate(Enum face, Enum sfail, Enum dpfail, Enum dppass);
 
-	TST_API void viewport(Int x, Int y, SizeI width, SizeI height);
+	TST_API void viewport(Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
 	TST_API void viewportArrayV(UInt first, SizeI count, const Float *v);
 
@@ -999,53 +999,53 @@ namespace gl
 
 	TST_API void bindTextures(UInt first, SizeI count, const UInt *textures);
 
-	TST_API void clearTexImage(UInt texture, Int level, Format p_format, DataType p_type, const void *data);
+	TST_API void clearTexImage(UInt texture, Int level, Format p_format, DataType p_type, const Void *data);
 
-	TST_API void clearTexSubImage(UInt     texture, Int        level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
-								  DataType p_type, const void *data);
+	TST_API void clearTexSubImage(UInt     texture, Int        level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
+								  DataType p_type, const Void *data);
 
 	TST_API void compressedTexImage1D(TextureType p_target, Int level, Format p_internal_format, SizeI width, Int border, SizeI imageSize, const Void *data);
 
-	TST_API void compressedTexImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI width, SizeI height, Int border, SizeI imageSize,
+	TST_API void compressedTexImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI p_width, SizeI p_height, Int border, SizeI imageSize,
 									  const Void *data);
 
-	TST_API void compressedTexImage3D(TextureType p_target, Int level, Format p_internal_format, SizeI width, SizeI height, SizeI depth, Int border, SizeI imageSize,
+	TST_API void compressedTexImage3D(TextureType p_target, Int level, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth, Int border, SizeI imageSize,
 									  const Void *data);
 
 	TST_API void compressedTexSubImage1D(TextureType p_target, Int level, Int x_offset, SizeI width, Format p_format, SizeI imageSize, const Void *data);
 
-	TST_API void compressedTextureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Format p_format, SizeI imageSize, const void *data);
+	TST_API void compressedTextureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Format p_format, SizeI imageSize, const Void *data);
 
-	TST_API void compressedTexSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Format p_format, SizeI imageSize,
+	TST_API void compressedTexSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format, SizeI imageSize,
 										 const Void *data);
 
-	TST_API void compressedTextureSubImage2D(UInt        texture, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Format p_format, SizeI imageSize,
-											 const void *data);
+	TST_API void compressedTextureSubImage2D(UInt        texture, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format, SizeI imageSize,
+											 const Void *data);
 
-	TST_API void compressedTexSubImage3D(TextureType p_target, Int   level, Int             x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth,
+	TST_API void compressedTexSubImage3D(TextureType p_target, Int   level, Int             x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth,
 										 Format      p_format, SizeI imageSize, const Void *data);
 
-	TST_API void compressedTextureSubImage3D(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
-											 SizeI imageSize, const void *data);
+	TST_API void compressedTextureSubImage3D(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
+											 SizeI imageSize, const Void *data);
 
 	TST_API void copyImageSubData(UInt srcName, TextureType p_src_target, Int srcLevel, Int srcX, Int   srcY, Int       srcZ, UInt dstName, TextureType p_dst_target,
 								  Int  dstLevel, Int        dstX, Int         dstY, Int     dstZ, SizeI srcWidth, SizeI srcHeight, SizeI srcDepth);
 
-	TST_API void copyTexImage1D(TextureType p_target, Int level, Format p_internal_format, Int x, Int y, SizeI width, Int border);
+	TST_API void copyTexImage1D(TextureType p_target, Int level, Format p_internal_format, Int p_x, Int p_y, SizeI width, Int border);
 
-	TST_API void copyTexImage2D(TextureType p_target, Int level, Format p_internal_format, Int x, Int y, SizeI width, SizeI height, Int border);
+	TST_API void copyTexImage2D(TextureType p_target, Int level, Format p_internal_format, Int p_x, Int p_y, SizeI p_width, SizeI p_height, Int border);
 
-	TST_API void copyTexSubImage1D(TextureType p_target, Int level, Int x_offset, Int x, Int y, SizeI width);
+	TST_API void copyTexSubImage1D(TextureType p_target, Int level, Int x_offset, Int p_x, Int p_y, SizeI width);
 
-	TST_API void copyTextureSubImage1D(UInt texture, Int level, Int x_offset, Int x, Int y, SizeI width);
+	TST_API void copyTextureSubImage1D(UInt texture, Int level, Int x_offset, Int p_x, Int p_y, SizeI width);
 
-	TST_API void copyTexSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, Int x, Int y, SizeI width, SizeI height);
+	TST_API void copyTexSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
-	TST_API void copyTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, Int x, Int y, SizeI width, SizeI height);
+	TST_API void copyTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
-	TST_API void copyTexSubImage3D(TextureType p_target, Int level, Int x_offset, Int y_offset, Int z_offset, Int x, Int y, SizeI width, SizeI height);
+	TST_API void copyTexSubImage3D(TextureType p_target, Int level, Int x_offset, Int y_offset, Int z_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
-	TST_API void copyTextureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, Int x, Int y, SizeI width, SizeI height);
+	TST_API void copyTextureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height);
 
 	TST_API void createTextures(TextureType p_target, SizeI n, UInt *textures);
 
@@ -1055,18 +1055,18 @@ namespace gl
 
 	TST_API void getCompressedTexImage(TextureType p_target, Int level, Void *pixels);
 
-	TST_API void getnCompressedTexImage(TextureType p_target, Int level, SizeI bufSize, void *pixels);
+	TST_API void getnCompressedTexImage(TextureType p_target, Int level, SizeI bufSize, Void *pixels);
 
-	TST_API void getCompressedTextureImage(UInt texture, Int level, SizeI bufSize, void *pixels);
+	TST_API void getCompressedTextureImage(UInt texture, Int level, SizeI bufSize, Void *pixels);
 
-	TST_API void getCompressedTextureSubImage(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, SizeI bufSize,
-											  void *pixels);
+	TST_API void getCompressedTextureSubImage(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, SizeI bufSize,
+											  Void *pixels);
 
 	TST_API void getTexImage(TextureType p_target, Int level, Format p_format, DataType p_type, Void *pixels);
 
-	TST_API void getnTexImage(TextureType p_target, Int level, Format p_format, DataType p_type, SizeI bufSize, void *pixels);
+	TST_API void getnTexImage(TextureType p_target, Int level, Format p_format, DataType p_type, SizeI bufSize, Void *pixels);
 
-	TST_API void getTextureImage(UInt texture, Int level, Format p_format, DataType p_type, SizeI bufSize, void *pixels);
+	TST_API void getTextureImage(UInt texture, Int level, Format p_format, DataType p_type, SizeI bufSize, Void *pixels);
 
 	TST_API void getTexLevelParameterFv(TextureType p_target, Int level, Enum pname, Float *params);
 
@@ -1092,12 +1092,12 @@ namespace gl
 
 	TST_API void getTextureParameterIuiv(UInt texture, Enum pname, UInt *params);
 
-	TST_API void getTextureSubImage(UInt     texture, Int  level, Int     x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
-									DataType p_type, SizeI bufSize, void *pixels);
+	TST_API void getTextureSubImage(UInt     texture, Int  level, Int     x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
+									DataType p_type, SizeI bufSize, Void *pixels);
 
 	TST_API void invalidateTexImage(UInt texture, Int level);
 
-	TST_API void invalidateTexSubImage(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth);
+	TST_API void invalidateTexSubImage(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth);
 
 	TST_API Bool isTexture(UInt texture);
 
@@ -1111,15 +1111,15 @@ namespace gl
 
 	TST_API void texImage1D(TextureType p_target, Int level, Format p_internal_format, SizeI width, Int border, Format p_format, DataType p_type, const Void *data);
 
-	TST_API void texImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI width, SizeI height, Int border, Format p_format, DataType p_type,
+	TST_API void texImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI p_width, SizeI p_height, Int border, Format p_format, DataType p_type,
 							const Void *data);
 
-	TST_API void texImage2DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI width, SizeI height, Bool fixed_sample_locations);
+	TST_API void texImage2DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, Bool fixed_sample_locations);
 
-	TST_API void texImage3D(TextureType p_target, Int       level, Format p_internal_format, SizeI width, SizeI height, SizeI depth, Int border, Format p_format,
+	TST_API void texImage3D(TextureType p_target, Int       level, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth, Int border, Format p_format,
 							DataType    p_type, const Void *data);
 
-	TST_API void texImage3DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI width, SizeI height, SizeI depth,
+	TST_API void texImage3DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth,
 									   Bool        fixed_sample_locations);
 
 	TST_API void texParameterf(TextureType p_target, SamplerParameter p_sampler_parameter, Float param);
@@ -1150,39 +1150,40 @@ namespace gl
 
 	TST_API void textureStorage1D(UInt texture, SizeI levels, Format p_internal_format, SizeI width);
 
-	TST_API void texStorage2D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void texStorage2D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height);
 
-	TST_API void textureStorage2D(UInt texture, SizeI levels, Format p_internal_format, SizeI width, SizeI height);
+	TST_API void textureStorage2D(UInt texture, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height);
 
-	TST_API void texStorage2DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI width, SizeI height, Bool fixed_sample_locations);
+	TST_API void texStorage2DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, Bool fixed_sample_locations);
 
-	TST_API void textureStorage2DMultisample(UInt texture, SizeI samples, Format p_internal_format, SizeI width, SizeI height, Bool fixed_sample_locations);
+	TST_API void textureStorage2DMultisample(UInt texture, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, Bool fixed_sample_locations);
 
-	TST_API void texStorage3D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI width, SizeI height, SizeI depth);
+	TST_API void texStorage3D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth);
 
-	TST_API void textureStorage3D(UInt texture, SizeI levels, Format p_internal_format, SizeI width, SizeI height, SizeI depth);
+	TST_API void textureStorage3D(UInt texture, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth);
 
-	TST_API void texStorage3DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI width, SizeI height, SizeI depth,
+	TST_API void texStorage3DMultisample(TextureType p_target, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth,
 										 Bool        fixed_sample_locations);
 
-	TST_API void textureStorage3DMultisample(UInt texture, SizeI samples, Format p_internal_format, SizeI width, SizeI height, SizeI depth, Bool fixed_sample_locations);
+	TST_API void textureStorage3DMultisample(UInt texture, SizeI samples, Format p_internal_format, SizeI p_width, SizeI p_height, SizeI depth, Bool fixed_sample_locations);
 
 	TST_API void texSubImage1D(TextureType p_target, Int level, Int x_offset, SizeI width, Format p_format, DataType p_type, const Void *pixels);
 
-	TST_API void textureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Format p_format, DataType p_type, const void *pixels);
+	TST_API void textureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Format p_format, DataType p_type, const Void *pixels);
 
-	TST_API void texSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Format p_format, DataType p_type,
+	TST_API void texSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format, DataType p_type,
 							   const Void *pixels);
 
-	TST_API void textureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Format p_format, DataType p_type, const void *pixels);
+	TST_API void textureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format, DataType p_type, const Void *pixels);
 
-	TST_API void texSubImage3D(TextureType p_target, Int       level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
+	TST_API void texSubImage3D(TextureType p_target, Int       level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
 							   DataType    p_type, const Void *pixels);
 
-	TST_API void textureSubImage3D(UInt     texture, Int        level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
-								   DataType p_type, const void *pixels);
+	TST_API void textureSubImage3D(UInt     texture, Int        level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
+								   DataType p_type, const Void *pixels);
 
-	TST_API void textureView(UInt p_texture, TextureType p_target, UInt p_origin_texture, Format p_internal_format, UInt p_min_level, UInt p_num_levels, UInt p_min_layer, UInt p_num_layers);
+	TST_API void textureView(UInt p_texture, TextureType p_target, UInt p_origin_texture, Format p_internal_format, UInt p_min_level, UInt p_num_levels, UInt p_min_layer,
+							 UInt p_num_layers);
 
 	#pragma endregion
 
@@ -1190,11 +1191,11 @@ namespace gl
 
 	TST_API void attachShader(UInt program, UInt shader);
 
-	TST_API void bindAttribLocation(UInt program, UInt index, const Char *name);
+	TST_API void bindAttribLocation(UInt program, UInt index, CString name);
 
-	TST_API void bindFragDataLocation(UInt program, UInt colorNumber, const char *name);
+	TST_API void bindFragDataLocation(UInt program, UInt colorNumber, CString name);
 
-	TST_API void bindFragDataLocationIndexed(UInt program, UInt colorNumber, UInt index, const char *name);
+	TST_API void bindFragDataLocationIndexed(UInt program, UInt colorNumber, UInt index, CString name);
 
 	TST_API void compileShader(UInt shader);
 
@@ -1202,7 +1203,7 @@ namespace gl
 
 	TST_API UInt createShader(ShaderStage p_shader_stage);
 
-	TST_API UInt createShaderProgramV(ShaderStage p_shader_stage, SizeI count, const char **strings);
+	TST_API UInt createShaderProgramV(ShaderStage p_shader_stage, SizeI count, CString *strings);
 
 	TST_API void deleteProgram(UInt program);
 
@@ -1232,25 +1233,25 @@ namespace gl
 
 	TST_API void getAttachedShaders(UInt program, SizeI maxCount, SizeI *count, UInt *shaders);
 
-	TST_API Int getAttribLocation(UInt program, const Char *name);
+	TST_API Int getAttribLocation(UInt program, CString name);
 
-	TST_API Int getFragDataIndex(UInt program, const char *name);
+	TST_API Int getFragDataIndex(UInt program, CString name);
 
-	TST_API Int getFragDataLocation(UInt program, const char *name);
+	TST_API Int getFragDataLocation(UInt program, CString name);
 
 	TST_API void getProgramiv(UInt program, ProgramQuery p_query, Int *params);
 
-	TST_API void getProgramBinary(UInt program, SizeI buffer_size, SizeI *length, Enum *binaryFormat, void *binary);
+	TST_API void getProgramBinary(UInt program, SizeI buffer_size, SizeI *length, Enum *binaryFormat, Void *binary);
 
 	TST_API void getProgramInfoLog(UInt program, SizeI maxLength, SizeI *length, Char *infoLog);
 
 	TST_API void getProgramResourceiv(UInt program, Enum programInterface, UInt index, SizeI propCount, const Enum *props, SizeI bufSize, SizeI *length, Int *params);
 
-	TST_API UInt getProgramResourceIndex(UInt program, Enum programInterface, const char *name);
+	TST_API UInt getProgramResourceIndex(UInt program, Enum programInterface, CString name);
 
-	TST_API Int getProgramResourceLocation(UInt program, Enum programInterface, const char *name);
+	TST_API Int getProgramResourceLocation(UInt program, Enum programInterface, CString name);
 
-	TST_API Int getProgramResourceLocationIndex(UInt program, Enum programInterface, const char *name);
+	TST_API Int getProgramResourceLocationIndex(UInt program, Enum programInterface, CString name);
 
 	TST_API void getProgramResourceName(UInt program, Enum programInterface, UInt index, SizeI bufSize, SizeI *length, char *name);
 
@@ -1264,9 +1265,9 @@ namespace gl
 
 	TST_API void getShaderSource(UInt shader, SizeI bufSize, SizeI *length, Char *source);
 
-	TST_API UInt getSubroutineIndex(UInt program, Enum shader_type, const Char *name);
+	TST_API UInt getSubroutineIndex(UInt program, Enum shader_type, CString name);
 
-	TST_API Int getSubroutineUniformLocation(UInt program, Enum shader_type, const Char *name);
+	TST_API Int getSubroutineUniformLocation(UInt program, Enum shader_type, CString name);
 
 	TST_API void getUniformfv(UInt program, Int location, Float *params);
 
@@ -1284,11 +1285,11 @@ namespace gl
 
 	TST_API void getnUniformdv(UInt program, Int location, SizeI bufSize, Double *params);
 
-	TST_API UInt getUniformBlockIndex(UInt program, const Char *uniformBlockName);
+	TST_API UInt getUniformBlockIndex(UInt program, CString uniformBlockName);
 
-	TST_API void getUniformIndices(UInt program, SizeI uniformCount, const Char **uniformNames, UInt *uniformIndices);
+	TST_API void getUniformIndices(UInt program, SizeI uniformCount, CString *uniformNames, UInt *uniformIndices);
 
-	TST_API Int getUniformLocation(UInt program, const Char *name);
+	TST_API Int getUniformLocation(UInt program, CString name);
 
 	TST_API void getUniformSubroutineuiv(Enum shader_type, Int location, UInt *values);
 
@@ -1300,7 +1301,7 @@ namespace gl
 
 	TST_API void minSampleShading(Float value);
 
-	TST_API void programBinary(UInt program, ShaderBinaryFormat p_binary_format, const void *binary, SizeI length);
+	TST_API void programBinary(UInt program, ShaderBinaryFormat p_binary_format, const Void *binary, SizeI length);
 
 	TST_API void programParameteri(UInt program, Enum pname, Int value);
 
@@ -1372,14 +1373,13 @@ namespace gl
 
 	TST_API void releaseShaderCompiler();
 
-	TST_API void shaderBinary(SizeI count, const UInt *shaders, ShaderBinaryFormat p_binary_format, const void *binary, SizeI length);
+	TST_API void shaderBinary(SizeI count, const UInt *shaders, ShaderBinaryFormat p_binary_format, const Void *binary, SizeI length);
 
-	TST_API void shaderSource(UInt shader, SizeI count, const Char **string, const Int *length);
+	TST_API void shaderSource(UInt shader, SizeI count, CString *string, const Int *length);
 
 	TST_API void shaderStorageBlockBinding(UInt program, UInt storageBlockIndex, UInt storageBlockBinding);
 
-	TST_API void specializeShader(UInt        p_shader, const Char *p_entry_point, UInt p_num_specialization_constants, const UInt *p_constant_index,
-								  const UInt *p_constant_value);
+	TST_API void specializeShader(UInt p_shader, CString p_entry_point, UInt p_num_specialization_constants, const UInt *p_constant_index, const UInt *p_constant_value);
 
 	TST_API void uniform1f(Int location, Float v0);
 
@@ -1477,7 +1477,7 @@ namespace gl
 
 	#pragma region Debug
 
-	TST_API void debugMessageCallback(DebugCallbackProc callback, void *userParam);
+	TST_API void debugMessageCallback(DebugCallbackProc callback, Void *userParam);
 
 	#pragma endregion
 }

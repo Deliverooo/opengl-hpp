@@ -106,14 +106,14 @@ namespace gl
 		glNamedFramebufferReadBuffer(p_framebuffer, mode);
 	}
 
-	void readPixels(Int x, Int y, Int width, Int height, Enum format, Enum type, Void *data)
+	void readPixels(Int p_x, Int p_y, Int p_width, Int p_height, Format p_format,DataType p_type, Void *data)
 	{
-		glReadPixels(x, y, width, height, format, type, data);
+		glReadPixels(p_x, p_y, p_width, p_height, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void readnPixels(Int x, Int y, Int width, Int height, Enum format, Enum type, Int buffer_size, Void *data)
+	void readnPixels(Int p_x, Int p_y, Int p_width, Int p_height, Format p_format,DataType p_type, Int buffer_size, Void *data)
 	{
-		glReadnPixels(x, y, width, height, format, type, buffer_size, data);
+		glReadnPixels(p_x, p_y, p_width, p_height, static_cast<Enum>(p_format), static_cast<Enum>(p_type), buffer_size, data);
 	}
 
 	#pragma endregion
@@ -296,14 +296,14 @@ namespace gl
 		glInvalidateNamedFramebufferData(p_framebuffer, num_attachments, attachments);
 	}
 
-	void invalidateSubFramebuffer(Enum target, SizeI num_attachments, const Enum *attachments, Int x, Int y, Int width, Int height)
+	void invalidateSubFramebuffer(Enum target, SizeI num_attachments, const Enum *attachments, Int p_x, Int p_y, Int p_width, Int p_height)
 	{
-		glInvalidateSubFramebuffer(target, num_attachments, attachments, x, y, width, height);
+		glInvalidateSubFramebuffer(target, num_attachments, attachments, p_x, p_y, p_width, p_height);
 	}
 
-	void invalidateNamedFramebufferSubData(UInt p_framebuffer, SizeI num_attachments, const Enum *attachments, Int x, Int y, Int width, Int height)
+	void invalidateNamedFramebufferSubData(UInt p_framebuffer, SizeI num_attachments, const Enum *attachments, Int p_x, Int p_y, Int p_width, Int p_height)
 	{
-		glInvalidateNamedFramebufferSubData(p_framebuffer, num_attachments, attachments, x, y, width, height);
+		glInvalidateNamedFramebufferSubData(p_framebuffer, num_attachments, attachments, p_x, p_y, p_width, p_height);
 	}
 
 	bool isFramebuffer(UInt p_framebuffer)
@@ -316,24 +316,24 @@ namespace gl
 		return glIsRenderbuffer(p_renderbuffer);
 	}
 
-	void renderbufferStorage(Enum target, Enum internalformat, SizeI width, SizeI height)
+	void renderbufferStorage(Enum target, Enum internalformat, SizeI p_width, SizeI p_height)
 	{
-		glRenderbufferStorage(target, internalformat, width, height);
+		glRenderbufferStorage(target, internalformat, p_width, p_height);
 	}
 
-	void namedRenderbufferStorage(UInt p_renderbuffer, Enum internalformat, SizeI width, SizeI height)
+	void namedRenderbufferStorage(UInt p_renderbuffer, Enum internalformat, SizeI p_width, SizeI p_height)
 	{
-		glNamedRenderbufferStorage(p_renderbuffer, internalformat, width, height);
+		glNamedRenderbufferStorage(p_renderbuffer, internalformat, p_width, p_height);
 	}
 
-	void renderbufferStorageMultisample(Enum target, SizeI samples, Enum internalformat, SizeI width, SizeI height)
+	void renderbufferStorageMultisample(Enum target, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height)
 	{
-		glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
+		glRenderbufferStorageMultisample(target, samples, internalformat, p_width, p_height);
 	}
 
-	void namedRenderbufferStorageMultisample(UInt p_renderbuffer, SizeI samples, Enum internalformat, SizeI width, SizeI height)
+	void namedRenderbufferStorageMultisample(UInt p_renderbuffer, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height)
 	{
-		glNamedRenderbufferStorageMultisample(p_renderbuffer, samples, internalformat, width, height);
+		glNamedRenderbufferStorageMultisample(p_renderbuffer, samples, internalformat, p_width, p_height);
 	}
 
 	void sampleMaskI(UInt index, Bitfield mask)
@@ -420,24 +420,24 @@ namespace gl
 		glNamedBufferSubData(target, offset, size, data);
 	}
 
-	void clearBufferData(BufferType p_target, Enum internal_format, Enum format, Enum type, const Void *data)
+	void clearBufferData(BufferType p_target, Enum internal_format, Format p_format,DataType p_type, const Void *data)
 	{
-		glClearBufferData(static_cast<Enum>(p_target), internal_format, format, type, data);
+		glClearBufferData(static_cast<Enum>(p_target), internal_format, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void clearNamedBufferData(UInt target, Enum internal_format, Enum format, Enum type, const Void *data)
+	void clearNamedBufferData(UInt target, Enum internal_format, Format p_format,DataType p_type, const Void *data)
 	{
-		glClearNamedBufferData(target, internal_format, format, type, data);
+		glClearNamedBufferData(target, internal_format, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void clearBufferSubData(BufferType p_target, Enum internal_format, IntPtr offset, SizeIPtr size, Enum format, Enum type, const Void *data)
+	void clearBufferSubData(BufferType p_target, Enum internal_format, IntPtr offset, SizeIPtr size, Format p_format,DataType p_type, const Void *data)
 	{
-		glClearBufferSubData(static_cast<Enum>(p_target), internal_format, offset, size, format, type, data);
+		glClearBufferSubData(static_cast<Enum>(p_target), internal_format, offset, size, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void clearNamedBufferSubData(UInt target, Enum internal_format, IntPtr offset, SizeIPtr size, Enum format, Enum type, const Void *data)
+	void clearNamedBufferSubData(UInt target, Enum internal_format, IntPtr offset, SizeIPtr size, Format p_format,DataType p_type, const Void *data)
 	{
-		glClearNamedBufferSubData(target, internal_format, offset, size, format, type, data);
+		glClearNamedBufferSubData(target, internal_format, offset, size, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
 	void copyBufferSubData(BufferType p_read_target, BufferType p_write_target, IntPtr readOffset, IntPtr writeOffset, SizeIPtr size)
@@ -505,17 +505,17 @@ namespace gl
 		glDrawElementsBaseVertex(static_cast<Enum>(p_mode), p_count, static_cast<Enum>(p_type), p_indices, p_base_vertex);
 	}
 
-	void drawElementsIndirect(DrawMode p_mode, DataType p_type, const void *p_indirect)
+	void drawElementsIndirect(DrawMode p_mode, DataType p_type, const Void *p_indirect)
 	{
 		glDrawElementsIndirect(static_cast<Enum>(p_mode), static_cast<Enum>(p_type), p_indirect);
 	}
 
-	void drawElementsInstanced(DrawMode p_mode, SizeI p_count, DataType p_type, const void *p_indices, SizeI p_primitive_count)
+	void drawElementsInstanced(DrawMode p_mode, SizeI p_count, DataType p_type, const Void *p_indices, SizeI p_primitive_count)
 	{
 		glDrawElementsInstanced(static_cast<Enum>(p_mode), p_count, static_cast<Enum>(p_type), p_indices, p_primitive_count);
 	}
 
-	void drawElementsInstancedBaseInstance(DrawMode p_mode, SizeI p_count, DataType p_type, const void *p_indices, SizeI p_primitive_count, UInt p_base_instance)
+	void drawElementsInstancedBaseInstance(DrawMode p_mode, SizeI p_count, DataType p_type, const Void *p_indices, SizeI p_primitive_count, UInt p_base_instance)
 	{
 		glDrawElementsInstancedBaseInstance(static_cast<Enum>(p_mode), p_count, static_cast<Enum>(p_type), p_indices, p_primitive_count, p_base_instance);
 	}
@@ -592,7 +592,7 @@ namespace gl
 		glGetBufferPointerv(target, pname, params);
 	}
 
-	void getNamedBufferPointerV(UInt buffer, Enum pname, void **params)
+	void getNamedBufferPointerV(UInt buffer, Enum pname, Void **params)
 	{
 		glGetNamedBufferPointerv(buffer, pname, params);
 	}
@@ -602,7 +602,7 @@ namespace gl
 		glGetBufferSubData(target, offset, size, data);
 	}
 
-	void getNamedBufferSubData(UInt buffer, IntPtr offset, SizeI size, void *data)
+	void getNamedBufferSubData(UInt buffer, IntPtr offset, SizeI size, Void *data)
 	{
 		glGetNamedBufferSubData(buffer, offset, size, data);
 	}
@@ -697,7 +697,7 @@ namespace gl
 		glMultiDrawArrays(mode, first, count, draw_count);
 	}
 
-	void multiDrawArraysIndirect(Enum mode, const void *indirect, SizeI draw_count, SizeI stride)
+	void multiDrawArraysIndirect(Enum mode, const Void *indirect, SizeI draw_count, SizeI stride)
 	{
 		glMultiDrawArraysIndirect(mode, indirect, draw_count, stride);
 	}
@@ -712,7 +712,7 @@ namespace gl
 		glMultiDrawElementsBaseVertex(mode, count, type, indices, draw_count, base_vertex);
 	}
 
-	void multiDrawElementsIndirect(Enum mode, Enum type, const void *indirect, SizeI draw_count, SizeI stride)
+	void multiDrawElementsIndirect(Enum mode, Enum type, const Void *indirect, SizeI draw_count, SizeI stride)
 	{
 		glMultiDrawElementsIndirect(mode, type, indirect, draw_count, stride);
 	}
@@ -1220,15 +1220,15 @@ namespace gl
 		glBindTextures(first, count, textures);
 	}
 
-	void clearTexImage(UInt texture, Int level, Enum format, Enum type, const void *data)
+	void clearTexImage(UInt texture, Int level, Format p_format,DataType p_type, const Void *data)
 	{
-		glClearTexImage(texture, level, format, type, data);
+		glClearTexImage(texture, level, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void clearTexSubImage(UInt        texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Enum format, Enum type,
-						  const void *data)
+	void clearTexSubImage(UInt        texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,DataType p_type,
+						  const Void *data)
 	{
-		glClearTexSubImage(texture, level, x_offset, y_offset, z_offset, width, height, depth, format, type, data);
+		glClearTexSubImage(texture, level, x_offset, y_offset, z_offset, p_width, p_height, depth, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
 	void compressedTexImage1D(Enum target, Int level, Enum internalformat, SizeI width, Int border, SizeI imageSize, const Void *data)
@@ -1236,14 +1236,14 @@ namespace gl
 		glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
 	}
 
-	void compressedTexImage2D(Enum target, Int level, Enum internalformat, SizeI width, SizeI height, Int border, SizeI imageSize, const Void *data)
+	void compressedTexImage2D(Enum target, Int level, Enum internalformat, SizeI p_width, SizeI p_height, Int border, SizeI imageSize, const Void *data)
 	{
-		glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+		glCompressedTexImage2D(target, level, internalformat, p_width, p_height, border, imageSize, data);
 	}
 
-	void compressedTexImage3D(Enum target, Int level, Enum internalformat, SizeI width, SizeI height, SizeI depth, Int border, SizeI imageSize, const Void *data)
+	void compressedTexImage3D(Enum target, Int level, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth, Int border, SizeI imageSize, const Void *data)
 	{
-		glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+		glCompressedTexImage3D(target, level, internalformat, p_width, p_height, depth, border, imageSize, data);
 	}
 
 	void compressedTexSubImage1D(Enum target, Int level, Int x_offset, SizeI width, Enum format, SizeI imageSize, const Void *data)
@@ -1251,31 +1251,31 @@ namespace gl
 		glCompressedTexSubImage1D(target, level, x_offset, width, format, imageSize, data);
 	}
 
-	void compressedTextureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Enum format, SizeI imageSize, const void *data)
+	void compressedTextureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Enum format, SizeI imageSize, const Void *data)
 	{
 		glCompressedTextureSubImage1D(texture, level, x_offset, width, format, imageSize, data);
 	}
 
-	void compressedTexSubImage2D(Enum target, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Enum format, SizeI imageSize, const Void *data)
+	void compressedTexSubImage2D(Enum target, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Enum format, SizeI imageSize, const Void *data)
 	{
-		glCompressedTexSubImage2D(target, level, x_offset, y_offset, width, height, format, imageSize, data);
+		glCompressedTexSubImage2D(target, level, x_offset, y_offset, p_width, p_height, format, imageSize, data);
 	}
 
-	void compressedTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Enum format, SizeI imageSize, const void *data)
+	void compressedTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Enum format, SizeI imageSize, const Void *data)
 	{
-		glCompressedTexSubImage2D(texture, level, x_offset, y_offset, width, height, format, imageSize, data);
+		glCompressedTexSubImage2D(texture, level, x_offset, y_offset, p_width, p_height, format, imageSize, data);
 	}
 
-	void compressedTexSubImage3D(Enum target, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Enum format, SizeI imageSize,
+	void compressedTexSubImage3D(Enum target, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Enum format, SizeI imageSize,
 								 const Void *data)
 	{
-		glCompressedTexSubImage3D(target, level, x_offset, y_offset, z_offset, width, height, depth, format, imageSize, data);
+		glCompressedTexSubImage3D(target, level, x_offset, y_offset, z_offset, p_width, p_height, depth, format, imageSize, data);
 	}
 
-	void compressedTextureSubImage3D(UInt  texture, Int           level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Enum format,
-									 SizeI imageSize, const void *data)
+	void compressedTextureSubImage3D(UInt  texture, Int           level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Enum format,
+									 SizeI imageSize, const Void *data)
 	{
-		glCompressedTextureSubImage3D(texture, level, x_offset, y_offset, z_offset, width, height, depth, format, imageSize, data);
+		glCompressedTextureSubImage3D(texture, level, x_offset, y_offset, z_offset, p_width, p_height, depth, format, imageSize, data);
 	}
 
 	void copyImageSubData(UInt srcName, Enum srcTarget, Int  srcLevel, Int    srcX, Int srcY, Int srcZ, UInt dstName, Enum dstTarget, Int dstLevel, Int dstX, Int dstY,
@@ -1284,44 +1284,44 @@ namespace gl
 		glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 	}
 
-	void copyTexImage1D(Enum target, Int level, Enum internalformat, Int x, Int y, SizeI width, Int border)
+	void copyTexImage1D(Enum target, Int level, Enum internalformat, Int p_x, Int p_y, SizeI width, Int border)
 	{
-		glCopyTexImage1D(target, level, internalformat, x, y, width, border);
+		glCopyTexImage1D(target, level, internalformat, p_x, p_y, width, border);
 	}
 
-	void copyTexImage2D(Enum target, Int level, Enum internalformat, Int x, Int y, SizeI width, SizeI height, Int border)
+	void copyTexImage2D(Enum target, Int level, Enum internalformat, Int p_x, Int p_y, SizeI p_width, SizeI p_height, Int border)
 	{
-		glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+		glCopyTexImage2D(target, level, internalformat, p_x, p_y, p_width, p_height, border);
 	}
 
-	void copyTexSubImage1D(Enum target, Int level, Int x_offset, Int x, Int y, SizeI width)
+	void copyTexSubImage1D(Enum target, Int level, Int x_offset, Int p_x, Int p_y, SizeI width)
 	{
-		glCopyTexSubImage1D(target, level, x_offset, x, y, width);
+		glCopyTexSubImage1D(target, level, x_offset, p_x, p_y, width);
 	}
 
-	void copyTextureSubImage1D(UInt texture, Int level, Int x_offset, Int x, Int y, SizeI width)
+	void copyTextureSubImage1D(UInt texture, Int level, Int x_offset, Int p_x, Int p_y, SizeI width)
 	{
-		glCopyTextureSubImage1D(texture, level, x_offset, x, y, width);
+		glCopyTextureSubImage1D(texture, level, x_offset, p_x, p_y, width);
 	}
 
-	void copyTexSubImage2D(Enum target, Int level, Int x_offset, Int y_offset, Int x, Int y, SizeI width, SizeI height)
+	void copyTexSubImage2D(Enum target, Int level, Int x_offset, Int y_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
-		glCopyTexImage2D(target, level, x_offset, y_offset, x, y, width, height);
+		glCopyTexImage2D(target, level, x_offset, y_offset, p_x, p_y, p_width, p_height);
 	}
 
-	void copyTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, Int x, Int y, SizeI width, SizeI height)
+	void copyTextureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
-		glCopyTextureSubImage2D(texture, level, x_offset, y_offset, x, y, width, height);
+		glCopyTextureSubImage2D(texture, level, x_offset, y_offset, p_x, p_y, p_width, p_height);
 	}
 
-	void copyTexSubImage3D(Enum target, Int level, Int x_offset, Int y_offset, Int z_offset, Int x, Int y, SizeI width, SizeI height)
+	void copyTexSubImage3D(Enum target, Int level, Int x_offset, Int y_offset, Int z_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
-		glCopyTexSubImage3D(target, level, x_offset, y_offset, z_offset, x, y, width, height);
+		glCopyTexSubImage3D(target, level, x_offset, y_offset, z_offset, p_x, p_y, p_width, p_height);
 	}
 
-	void copyTextureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, Int x, Int y, SizeI width, SizeI height)
+	void copyTextureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
-		glCopyTextureSubImage3D(texture, level, x_offset, y_offset, z_offset, x, y, width, height);
+		glCopyTextureSubImage3D(texture, level, x_offset, y_offset, z_offset, p_x, p_y, p_width, p_height);
 	}
 
 	void createTextures(TextureType p_target, SizeI n, UInt *textures)
@@ -1344,20 +1344,20 @@ namespace gl
 		glGetCompressedTexImage(target, level, pixels);
 	}
 
-	void getnCompressedTexImage(Enum target, Int level, SizeI bufSize, void *pixels)
+	void getnCompressedTexImage(Enum target, Int level, SizeI bufSize, Void *pixels)
 	{
 		glGetnCompressedTexImage(target, level, bufSize, pixels);
 	}
 
-	void getCompressedTextureImage(UInt texture, Int level, SizeI bufSize, void *pixels)
+	void getCompressedTextureImage(UInt texture, Int level, SizeI bufSize, Void *pixels)
 	{
 		glGetCompressedTextureImage(texture, level, bufSize, pixels);
 	}
 
-	void getCompressedTextureSubImage(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, SizeI bufSize,
-									  void *pixels)
+	void getCompressedTextureSubImage(UInt  texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, SizeI bufSize,
+									  Void *pixels)
 	{
-		glGetCompressedTextureSubImage(texture, level, x_offset, y_offset, z_offset, width, height, depth, bufSize, pixels);
+		glGetCompressedTextureSubImage(texture, level, x_offset, y_offset, z_offset, p_width, p_height, depth, bufSize, pixels);
 	}
 
 	void getTexImage(TextureType p_target, Int level, Format p_format, DataType p_type, Void *pixels)
@@ -1365,12 +1365,12 @@ namespace gl
 		glGetTexImage(static_cast<Enum>(p_target), level, static_cast<Enum>(p_format), static_cast<Enum>(p_type), pixels);
 	}
 
-	void getnTexImage(Enum target, Int level, Enum format, Enum type, SizeI bufSize, void *pixels)
+	void getnTexImage(Enum target, Int level, Format p_format,DataType p_type, SizeI bufSize, Void *pixels)
 	{
-		glGetnTexImage(target, level, format, type, bufSize, pixels);
+		glGetnTexImage(target, level, static_cast<Enum>(p_format), static_cast<Enum>(p_type), bufSize, pixels);
 	}
 
-	void getTextureImage(UInt texture, Int level, Format p_format, DataType p_type, SizeI bufSize, void *pixels)
+	void getTextureImage(UInt texture, Int level, Format p_format, DataType p_type, SizeI bufSize, Void *pixels)
 	{
 		glGetTextureImage(texture, level, static_cast<Enum>(p_format), static_cast<Enum>(p_type), bufSize, pixels);
 	}
@@ -1435,10 +1435,10 @@ namespace gl
 		glGetTextureParameterIuiv(texture, pname, params);
 	}
 
-	void getTextureSubImage(UInt  texture, Int   level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Enum format, Enum type,
-							SizeI bufSize, void *pixels)
+	void getTextureSubImage(UInt  texture, Int   level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,DataType p_type,
+							SizeI bufSize, Void *pixels)
 	{
-		glGetTextureSubImage(texture, level, x_offset, y_offset, z_offset, width, height, depth, format, type, bufSize, pixels);
+		glGetTextureSubImage(texture, level, x_offset, y_offset, z_offset, p_width, p_height, depth, static_cast<Enum>(p_format), static_cast<Enum>(p_type), bufSize, pixels);
 	}
 
 	void invalidateTexImage(UInt texture, Int level)
@@ -1446,9 +1446,9 @@ namespace gl
 		glInvalidateTexImage(texture, level);
 	}
 
-	void invalidateTexSubImage(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth)
+	void invalidateTexSubImage(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth)
 	{
-		glInvalidateTexSubImage(texture, level, x_offset, y_offset, z_offset, width, height, depth);
+		glInvalidateTexSubImage(texture, level, x_offset, y_offset, z_offset, p_width, p_height, depth);
 	}
 
 	Bool isTexture(UInt texture)
@@ -1472,28 +1472,28 @@ namespace gl
 	{
 	}
 
-	void texImage1D(TextureType p_target, Int level, Int internalFormat, SizeI width, Int border, Enum format, Enum type, const Void *data)
+	void texImage1D(TextureType p_target, Int level, Int internalFormat, SizeI width, Int border, Format p_format,DataType p_type, const Void *data)
 	{
 	}
 
-	void texImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI width, SizeI height, Int border, Format p_format, DataType p_type, const Void *data)
+	void texImage2D(TextureType p_target, Int level, Format p_internal_format, SizeI p_width, SizeI p_height, Int border, Format p_format, DataType p_type, const Void *data)
 	{
-		glTexImage2D(static_cast<Enum>(p_target), level, static_cast<Int>(p_internal_format), width, height, border, static_cast<Enum>(p_format),
+		glTexImage2D(static_cast<Enum>(p_target), level, static_cast<Int>(p_internal_format), p_width, p_height, border, static_cast<Enum>(p_format),
 					 static_cast<Enum>(p_type), data);
 	}
 
-	void texImage2DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI width, SizeI height, Bool fixed_sample_locations)
+	void texImage2DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, Bool fixed_sample_locations)
 	{
 	}
 
-	void texImage3D(TextureType p_target, Int level, Int internalFormat, SizeI width, SizeI height, SizeI depth, Int border, Enum format, Enum type, const Void *data)
+	void texImage3D(TextureType p_target, Int level, Int internalFormat, SizeI p_width, SizeI p_height, SizeI depth, Int border, Format p_format,DataType p_type, const Void *data)
 	{
-		glTexImage3D(static_cast<Enum>(p_target), level, internalFormat, width, height, depth, border, format, type, data);
+		glTexImage3D(static_cast<Enum>(p_target), level, internalFormat, p_width, p_height, depth, border, static_cast<Enum>(p_format), static_cast<Enum>(p_type), data);
 	}
 
-	void texImage3DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI width, SizeI height, SizeI depth, Bool fixed_sample_locations)
+	void texImage3DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth, Bool fixed_sample_locations)
 	{
-		glTexImage3DMultisample(static_cast<Enum>(p_target), samples, internalformat, width, height, depth, fixed_sample_locations);
+		glTexImage3DMultisample(static_cast<Enum>(p_target), samples, internalformat, p_width, p_height, depth, fixed_sample_locations);
 	}
 
 	void texParameterf(TextureType p_target, SamplerParameter p_sampler_parameter, Float param)
@@ -1557,64 +1557,64 @@ namespace gl
 	{
 	}
 
-	void texStorage2D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI width, SizeI height)
+	void texStorage2D(TextureType p_target, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height)
 	{
-		glTexStorage2D(static_cast<Enum>(p_target), levels, static_cast<Enum>(p_internal_format), width, height);
+		glTexStorage2D(static_cast<Enum>(p_target), levels, static_cast<Enum>(p_internal_format), p_width, p_height);
 	}
 
-	void textureStorage2D(UInt texture, SizeI levels, Format p_internal_format, SizeI width, SizeI height)
+	void textureStorage2D(UInt texture, SizeI levels, Format p_internal_format, SizeI p_width, SizeI p_height)
 	{
-		glTextureStorage2D(texture, levels, static_cast<Enum>(p_internal_format), width, height);
+		glTextureStorage2D(texture, levels, static_cast<Enum>(p_internal_format), p_width, p_height);
 	}
 
-	void texStorage2DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI width, SizeI height, Bool fixed_sample_locations)
-	{
-	}
-
-	void textureStorage2DMultisample(UInt texture, SizeI samples, Enum internalformat, SizeI width, SizeI height, Bool fixed_sample_locations)
+	void texStorage2DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, Bool fixed_sample_locations)
 	{
 	}
 
-	void texStorage3D(TextureType p_target, SizeI levels, Enum internalformat, SizeI width, SizeI height, SizeI depth)
+	void textureStorage2DMultisample(UInt texture, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, Bool fixed_sample_locations)
 	{
 	}
 
-	void textureStorage3D(UInt texture, SizeI levels, Enum internalformat, SizeI width, SizeI height, SizeI depth)
+	void texStorage3D(TextureType p_target, SizeI levels, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth)
 	{
 	}
 
-	void texStorage3DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI width, SizeI height, SizeI depth, Bool fixed_sample_locations)
+	void textureStorage3D(UInt texture, SizeI levels, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth)
 	{
 	}
 
-	void textureStorage3DMultisample(UInt texture, SizeI samples, Enum internalformat, SizeI width, SizeI height, SizeI depth, Bool fixed_sample_locations)
+	void texStorage3DMultisample(TextureType p_target, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth, Bool fixed_sample_locations)
 	{
 	}
 
-	void texSubImage1D(TextureType p_target, Int level, Int x_offset, SizeI width, Enum format, Enum type, const Void *pixels)
+	void textureStorage3DMultisample(UInt texture, SizeI samples, Enum internalformat, SizeI p_width, SizeI p_height, SizeI depth, Bool fixed_sample_locations)
 	{
 	}
 
-	void textureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Enum format, Enum type, const void *pixels)
+	void texSubImage1D(TextureType p_target, Int level, Int x_offset, SizeI width, Format p_format,DataType p_type, const Void *pixels)
 	{
 	}
 
-	void texSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Enum format, Enum type, const Void *pixels)
+	void textureSubImage1D(UInt texture, Int level, Int x_offset, SizeI width, Format p_format,DataType p_type, const Void *pixels)
 	{
 	}
 
-	void textureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI width, SizeI height, Format p_format, DataType p_type, const void *pixels)
+	void texSubImage2D(TextureType p_target, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format,DataType p_type, const Void *pixels)
 	{
-		glTextureSubImage2D(texture, level, x_offset, y_offset, width, height, static_cast<Enum>(p_format), static_cast<Enum>(p_type), pixels);
 	}
 
-	void texSubImage3D(TextureType p_target, Int       level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format,
+	void textureSubImage2D(UInt texture, Int level, Int x_offset, Int y_offset, SizeI p_width, SizeI p_height, Format p_format, DataType p_type, const Void *pixels)
+	{
+		glTextureSubImage2D(texture, level, x_offset, y_offset, p_width, p_height, static_cast<Enum>(p_format), static_cast<Enum>(p_type), pixels);
+	}
+
+	void texSubImage3D(TextureType p_target, Int       level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format,
 					   DataType    p_type, const Void *pixels)
 	{
 	}
 
-	void textureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI width, SizeI height, SizeI depth, Format p_format, DataType p_type,
-						   const void *pixels)
+	void textureSubImage3D(UInt texture, Int level, Int x_offset, Int y_offset, Int z_offset, SizeI p_width, SizeI p_height, SizeI depth, Format p_format, DataType p_type,
+						   const Void *pixels)
 	{
 	}
 
@@ -1841,7 +1841,7 @@ namespace gl
 	{
 	}
 
-	void scissor(Int x, Int y, Int width, Int height)
+	void scissor(Int p_x, Int p_y, Int p_width, Int p_height)
 	{
 	}
 
@@ -1849,7 +1849,7 @@ namespace gl
 	{
 	}
 
-	void scissorIndexed(UInt index, Int x, Int y, SizeI width, SizeI height)
+	void scissorIndexed(UInt index, Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
 	}
 
@@ -1881,9 +1881,9 @@ namespace gl
 	{
 	}
 
-	void viewport(Int x, Int y, SizeI width, SizeI height)
+	void viewport(Int p_x, Int p_y, SizeI p_width, SizeI p_height)
 	{
-		glViewport(x, y, width, height);
+		glViewport(p_x, p_y, p_width, p_height);
 	}
 
 	void viewportArrayV(UInt first, SizeI count, const Float *v)
@@ -2031,7 +2031,7 @@ namespace gl
 		glGetProgramiv(program, static_cast<Enum>(p_query), params);
 	}
 
-	void getProgramBinary(UInt program, SizeI buffer_size, SizeI *length, Enum *binaryFormat, void *binary)
+	void getProgramBinary(UInt program, SizeI buffer_size, SizeI *length, Enum *binaryFormat, Void *binary)
 	{
 		glGetProgramBinary(program, buffer_size, length, binaryFormat, binary);
 	}
@@ -2181,7 +2181,7 @@ namespace gl
 		glMinSampleShading(value);
 	}
 
-	void programBinary(UInt program, ShaderBinaryFormat p_binary_format, const void *binary, SizeI length)
+	void programBinary(UInt program, ShaderBinaryFormat p_binary_format, const Void *binary, SizeI length)
 	{
 		glProgramBinary(program, static_cast<Enum>(p_binary_format), binary, length);
 	}
@@ -2361,7 +2361,7 @@ namespace gl
 		glReleaseShaderCompiler();
 	}
 
-	void shaderBinary(SizeI count, const UInt *shaders, ShaderBinaryFormat p_binary_format, const void *binary, SizeI length)
+	void shaderBinary(SizeI count, const UInt *shaders, ShaderBinaryFormat p_binary_format, const Void *binary, SizeI length)
 	{
 		glShaderBinary(count, shaders, static_cast<Enum>(p_binary_format), binary, length);
 	}
@@ -2614,7 +2614,7 @@ namespace gl
 
 	#pragma region Debug
 
-	void debugMessageCallback(DebugCallbackProc callback, void *userParam)
+	void debugMessageCallback(DebugCallbackProc callback, Void *userParam)
 	{
 		glDebugMessageCallback(callback, userParam);
 	}
