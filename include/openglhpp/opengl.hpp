@@ -1138,9 +1138,9 @@ namespace gl
 
 	TST_API void texParameterIuiv(TextureType p_target, SamplerParameter p_sampler_parameter, const UInt *params);
 
-	TST_API void textureParameterFv(UInt texture, SamplerParameter p_sampler_parameter, const Float *param_texture);
+	TST_API void textureParameterfv(UInt texture, SamplerParameter p_sampler_parameter, const Float *param_texture);
 
-	TST_API void textureParameterIv(UInt texture, SamplerParameter p_sampler_parameter, const Int *param);
+	TST_API void textureParameteriv(UInt texture, SamplerParameter p_sampler_parameter, const Int *param);
 
 	TST_API void textureParameterIiv(UInt texture, SamplerParameter p_sampler_parameter, const Int *params);
 
