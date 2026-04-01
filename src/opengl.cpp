@@ -400,14 +400,14 @@ namespace gl
 		glNamedBufferData(target, size, data, static_cast<Enum>(p_usage));
 	}
 
-	void bufferStorage(BufferType p_target, SizeIPtr size, const Void *data, Bitfield flags)
+	void bufferStorage(BufferType p_target, SizeIPtr size, const Void *data, BufferAccessFlags p_flags)
 	{
-		glBufferStorage(static_cast<Enum>(p_target), size, data, flags);
+		glBufferStorage(static_cast<Enum>(p_target), size, data, p_flags);
 	}
 
-	void namedBufferStorage(UInt target, SizeIPtr size, const Void *data, Bitfield flags)
+	void namedBufferStorage(UInt target, SizeIPtr size, const Void *data, BufferAccessFlags p_flags)
 	{
-		glBufferStorage(target, size, data, flags);
+		glNamedBufferStorage(target, size, data, p_flags);
 	}
 
 	void bufferSubData(BufferType p_target, IntPtr offset, SizeIPtr size, const Void *data)
@@ -1920,16 +1920,19 @@ namespace gl
 		glViewport(p_x, p_y, p_width, p_height);
 	}
 
-	void viewportArrayV(UInt first, SizeI count, const Float *v)
+	void viewportArrayv(UInt first, SizeI count, const Float *v)
 	{
+		glViewportArrayv(first, count, v);
 	}
 
-	void viewportIndexedF(UInt index, Float x, Float y, Float width, Float height)
+	void viewportIndexedf(UInt index, Float x, Float y, Float width, Float height)
 	{
+		glViewportIndexedf(index, x, y, width, height);
 	}
 
-	void viewportIndexedFV(UInt index, const Float *v)
+	void viewportIndexedfv(UInt index, const Float *v)
 	{
+		glViewportIndexedfv(index, v);
 	}
 	#pragma endregion
 
@@ -2075,29 +2078,30 @@ namespace gl
 		glGetProgramInfoLog(program, maxLength, length, infoLog);
 	}
 
-	void getProgramResourceiv(UInt program, Enum programInterface, UInt index, SizeI propCount, const Enum *props, SizeI bufSize, SizeI *length, Int *params)
+	void getProgramResourceiv(UInt program, ProgramInterface p_program_interface, UInt index, SizeI propCount, const Enum *props, SizeI bufSize, SizeI *length,
+							  Int *params)
 	{
-		glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
+		glGetProgramResourceiv(program, static_cast<Enum>(p_program_interface), index, propCount, props, bufSize, length, params);
 	}
 
-	UInt getProgramResourceIndex(UInt program, Enum programInterface, const char *name)
+	UInt getProgramResourceIndex(UInt program, ProgramInterface p_program_interface, const char *name)
 	{
-		return glGetProgramResourceIndex(program, programInterface, name);
+		return glGetProgramResourceIndex(program, static_cast<Enum>(p_program_interface), name);
 	}
 
-	Int getProgramResourceLocation(UInt program, Enum programInterface, const char *name)
+	Int getProgramResourceLocation(UInt program, ProgramInterface p_program_interface, const char *name)
 	{
-		return glGetProgramResourceLocation(program, programInterface, name);
+		return glGetProgramResourceLocation(program, static_cast<Enum>(p_program_interface), name);
 	}
 
-	Int getProgramResourceLocationIndex(UInt program, Enum programInterface, const char *name)
+	Int getProgramResourceLocationIndex(UInt program, ProgramInterface p_program_interface, const char *name)
 	{
-		return glGetProgramResourceLocationIndex(program, programInterface, name);
+		return glGetProgramResourceLocationIndex(program, static_cast<Enum>(p_program_interface), name);
 	}
 
-	void getProgramResourceName(UInt program, Enum programInterface, UInt index, SizeI bufSize, SizeI *length, char *name)
+	void getProgramResourceName(UInt program, ProgramInterface p_program_interface, UInt index, SizeI bufSize, SizeI *length, char *name)
 	{
-		glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+		glGetProgramResourceName(program, static_cast<Enum>(p_program_interface), index, bufSize, length, name);
 	}
 
 	void getProgramStageiv(UInt program, Enum shader_type, Enum pname, Int *values)

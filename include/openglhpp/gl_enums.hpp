@@ -196,6 +196,32 @@ namespace gl
 		static constexpr BufferMaskFlags allFlags  = BufferMaskBits::eColor | BufferMaskBits::eDepth | BufferMaskBits::eStencil;
 	};
 
+	enum class BufferAccessBits : Bitfield
+	{
+		// Allows the user to read the buffer via mapping the buffer. Without this flag, attempting to map the buffer for reading will fail.
+		eMapRead = GL_MAP_READ_BIT,
+		// Allows the user to map the buffer for writing. Without this flag, attempting to map the buffer for writing will fail.
+		eMapWrite = GL_MAP_WRITE_BIT,
+		// Allows the user to modify the contents of the storage with glBufferSubData or glNamedBufferSubData. Without this flag, attempting to call that function on this buffer will fail.
+		eDynamicStorage = GL_DYNAMIC_STORAGE_BIT,
+		// Allows the buffer object to be mapped in such a way that it can be used while it is mapped. Without this flag, attempting to perform any operation on the buffer while it is mapped will fail. You must use one of the mapping bits when using this bit.
+		eMapPersistent = GL_MAP_PERSISTENT_BIT,
+		// Allows reads from and writes to a persistent buffer to be coherent with OpenGL, without an explicit barrier. Without this flag, you must use an explicit barrier to achieve coherency. You must use GL_PERSISTENT_BIT when using this bit.
+		eMapCoherent = GL_MAP_COHERENT_BIT,
+		// A hint that suggests to the implementation that the storage for the buffer should come from "client" memory.
+		eClientStorage = GL_CLIENT_STORAGE_BIT
+	};
+
+	using BufferAccessFlags = Flags<BufferAccessBits>;
+
+	template<>
+	struct FlagTraits<BufferAccessBits>
+	{
+		static constexpr bool              isBitmask = true;
+		static constexpr BufferAccessFlags allFlags  = BufferAccessBits::eMapRead | BufferAccessBits::eMapWrite | BufferAccessBits::eDynamicStorage |
+													   BufferAccessBits::eMapPersistent | BufferAccessBits::eMapCoherent | BufferAccessBits::eClientStorage;
+	};
+
 	/** If the parameters of a function call do not match the set of parameters allowed by OpenGL,
 	 * or do not interact reasonably with state that is already set in the context, then an OpenGL Error will result.
 	 * The errors are presented as an error code.
@@ -780,6 +806,46 @@ namespace gl
 	enum class ShaderBinaryFormat : Enum
 	{
 		eSpirV = GL_SHADER_BINARY_FORMAT_SPIR_V
+	};
+
+	enum class ProgramInterface : Enum
+	{
+		// The query is targeted at the set of active uniforms within program​.
+		eUniform = GL_UNIFORM,
+
+		// The query is targeted at the set of active uniform blocks within program​.
+		eUniformBlock = GL_UNIFORM_BLOCK,
+
+		// The query is targeted at the set of active input variables used by the first shader stage of program​. If program​ contains multiple shader stages then input variables from any stage other than the first will not be enumerated.
+		eProgramInput = GL_PROGRAM_INPUT,
+
+		// The query is targeted at the set of active output variables produced by the last shader stage of program​. If program​ contains multiple shader stages then output variables from any stage other than the last will not be enumerated.
+		eProgramOutput = GL_PROGRAM_OUTPUT,
+
+		// The query is targeted at the set of active subroutines for the vertex, tessellation control, tessellation evaluation, geometry, fragment and compute shader stages of program​, respectively.
+		eVertexSubroutine         = GL_VERTEX_SUBROUTINE,
+		eTessControlSubroutine    = GL_TESS_CONTROL_SUBROUTINE,
+		eTessEvaluationSubroutine = GL_TESS_EVALUATION_SUBROUTINE,
+		eGeometrySubroutine       = GL_GEOMETRY_SUBROUTINE,
+		eFragmentSubroutine       = GL_FRAGMENT_SUBROUTINE,
+		eComputeSubroutine        = GL_COMPUTE_SUBROUTINE,
+
+		// The query is targeted at the set of active subroutine uniform variables used by the vertex, tessellation control, tessellation evaluation, geometry, fragment and compute shader stages of program​, respectively.
+		eVertexSubroutineUniform         = GL_VERTEX_SUBROUTINE_UNIFORM,
+		eTessControlSubroutineUniform    = GL_TESS_CONTROL_SUBROUTINE_UNIFORM,
+		eTessEvaluationSubroutineUniform = GL_TESS_EVALUATION_SUBROUTINE_UNIFORM,
+		eGeometrySubroutineUniform       = GL_GEOMETRY_SUBROUTINE_UNIFORM,
+		eFragmentSubroutineUniform       = GL_FRAGMENT_SUBROUTINE_UNIFORM,
+		eComputeSubroutineUniform        = GL_COMPUTE_SUBROUTINE_UNIFORM,
+
+		// The query is targeted at the set of output variables from the last non-fragment stage of program​ that would be captured if transform feedback were active.
+		eTransformFeedbackVarying = GL_TRANSFORM_FEEDBACK_VARYING,
+
+		// The query is targeted at the set of active buffer variables used by program​.
+		eBufferVariable = GL_BUFFER_VARIABLE,
+
+		// The query is targeted at the set of active shader storage blocks used by program​.
+		eShaderStorageBlock = GL_SHADER_STORAGE_BLOCK
 	};
 
 	enum class TextureType : Enum
